@@ -1,0 +1,12 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: schedule
+  namespace: velero-ns
+spec:
+  schedule: '*/2 * * * *'
+  template:
+    ttl: "720h"
+    storageLocation: default
+    includedNamespaces:
+    - test-backup

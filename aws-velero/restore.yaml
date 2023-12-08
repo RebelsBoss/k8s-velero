@@ -1,0 +1,16 @@
+apiVersion: velero.io/v1
+kind: Restore
+# Standard Kubernetes metadata. Required.
+metadata:
+  name: test-restore-schedule
+  # Restore namespace. Must be the namespace of the Velero server. Required.
+  namespace: velero-ns
+# Parameters about the restore. Required.
+spec:
+  # BackupName is the unique name of the Velero backup to restore from.
+  backupName: schedule-20231208114630
+  # Array of namespaces to include in the restore. If unspecified, all namespaces are included.
+  # Optional.
+  includedNamespaces:
+  - 'test-backup'
+  restorePVs: true

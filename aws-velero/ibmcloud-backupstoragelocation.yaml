@@ -1,0 +1,13 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  labels:
+    component: velero
+  name: default
+  namespace: velero-ns
+spec:
+  config:
+    region: us-east-1
+  objectStorage:
+    bucket: bucket-andrii-project-392608
+  provider: aws
