@@ -9,5 +9,5 @@ spec:
   config:
     region: us-east-1
   objectStorage:
-    bucket: bucket-andrii-project-392608
+    bucket: <bucket>   !!!
   provider: aws
