@@ -1,0 +1,78 @@
+apiVersion: velero.io/v1
+kind: Restore
+# Standard Kubernetes metadata. Required.
+metadata:
+  name: test-restore-schedule
+  # Restore namespace. Must be the namespace of the Velero server. Required.
+  namespace: velero-ns
+# Parameters about the restore. Required.
+spec:
+  # BackupName is the unique name of the Velero backup to restore from.
+  backupName: schedule-20231204131040
+  # Array of namespaces to include in the restore. If unspecified, all namespaces are included.
+  # Optional.
+  includedNamespaces:
+  - 'velero-ns'
+  # Array of namespaces to exclude from the restore. Optional.
+  #excludedNamespaces:
+  #- some-namespace
+  # Array of resources to include in the restore. Resources may be shortcuts (for example 'po' for 'pods')
+  # or fully-qualified. If unspecified, all resources are included. Optional.
+  includedResources:
+  - 'pv'
+  - 'pvc'
+  # Array of resources to exclude from the restore. Resources may be shortcuts (for example 'po' for 'pods')
+  # or fully-qualified. Optional.
+  #excludedResources:
+  #- storageclasses.storage.k8s.io
+
+  # restoreStatus selects resources to restore not only the specification, but
+  # the status of the manifest. This is specially useful for CRDs that maintain
+  # external references. By default, it excludes all resources.
+  restoreStatus:
+    # Array of resources to include in the restore status. Just like above,
+    # resources may be shortcuts (for example 'po' for 'pods') or fully-qualified.
+    # If unspecified, no resources are included. Optional.
+    includedResources:
+    - workflows
+    # Array of resources to exclude from the restore status. Resources may be
+    # shortcuts (for example 'po' for 'pods') or fully-qualified.
+    # If unspecified, all resources are excluded. Optional.
+    excludedResources: []
+
+  # Whether or not to include cluster-scoped resources. Valid values are true, false, and
+  # null/unset. If true, all cluster-scoped resources are included (subject to included/excluded
+  # resources and the label selector). If false, no cluster-scoped resources are included. If unset,
+  # all cluster-scoped resources are included if and only if all namespaces are included and there are
+  # no excluded namespaces. Otherwise, if there is at least one namespace specified in either
+  # includedNamespaces or excludedNamespaces, then the only cluster-scoped resources that are backed
+  # up are those associated with namespace-scoped resources included in the restore. For example, if a
+  # PersistentVolumeClaim is included in the restore, its associated PersistentVolume (which is
+  # cluster-scoped) would also be backed up.
+  includeClusterResources: null
+  # Individual objects must match this label selector to be included in the restore. Optional.
+  #labelSelector:
+  #  matchLabels:
+  #    app: velero
+  #    component: server
+  # Individual object when matched with any of the label selector specified in the set are to be included in the restore. Optional.
+  # orLabelSelectors as well as labelSelector cannot co-exist, only one of them can be specified in the restore request
+  #orLabelSelectors:
+  #- matchLabels:
+  #    app: velero
+  #- matchLabels:
+  #    app: data-protection
+  # NamespaceMapping is a map of source namespace names to
+  # target namespace names to restore into. Any source namespaces not
+  # included in the map will be restored into namespaces of the same name.
+  #namespaceMapping:
+  #  namespace-backup-from: namespace-to-restore-to
+  # RestorePVs specifies whether to restore all included PVs
+  # from snapshot (via the cloudprovider).
+  restorePVs: true
+  # ScheduleName is the unique name of the Velero schedule
+  # to restore from. If specified, and BackupName is empty, Velero will
+  # restore from the most recent successful backup created from this schedule.
+  scheduleName: schedule-20231204131040
+  # ExistingResourcePolicy specifies the restore behaviour
+  # for the kubernetes resource to be restored. Optional

@@ -1,0 +1,15 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  labels:
+    component: velero
+  name: default
+  namespace: velero-ns
+spec:
+  config:
+    region: eu-de
+    s3ForcePathStyle: "true"
+    s3Url: <url>  !!!
+  objectStorage:
+    bucket: <bucket-name>  !!!
+  provider: aws

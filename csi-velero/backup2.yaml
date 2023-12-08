@@ -1,0 +1,14 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: test2-backup
+  namespace: velero-ns
+  annotations:
+    velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "csi-vsphere-vsc"
+    scheduled: "yes"
+  labels:
+    scheduled: "yes"
+    velero.io/schedule-name: "schedule"
+spec:
+  includedNamespaces:
+  - velero-ns
