@@ -3,8 +3,6 @@ kind: Schedule
 metadata:
   name: schedule
   namespace: velero-ns
-  #annotations:
-  #  velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "csi-vsphere-vsc"
 spec:
   # Every 5 min start, schedule
   schedule: '*/5 * * * *' 
