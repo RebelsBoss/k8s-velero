@@ -16,7 +16,7 @@ spec:
         name: node-agent
     spec:
       imagePullSecrets:
-      - name: <nexus-secret>   !!!
+      - name: <___>   !!!
       containers:
       - args:
         - node-agent
@@ -36,7 +36,7 @@ spec:
           value: /scratch
         - name: AWS_SHARED_CREDENTIALS_FILE
           value: /credentials/cloud
-        image: <velero/velero:v1.12.2>   !!!
+        image: <___>   !!!
         imagePullPolicy: Always
         name: node-agent
         resources: {}
