@@ -9,5 +9,5 @@ spec:
   config:
     region: us-east-1
   objectStorage:
-    bucket: <bucket>   !!!
+    bucket: <___>   !!!
   provider: aws
