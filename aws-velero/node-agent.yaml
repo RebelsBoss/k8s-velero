@@ -34,7 +34,7 @@ spec:
           value: /scratch
         - name: AWS_SHARED_CREDENTIALS_FILE
           value: /credentials/cloud
-        image: velero/velero:v1.12.2
+        image: <velero/velero:v1.12.2>   !!!
         imagePullPolicy: Always
         name: node-agent
         resources: {}
