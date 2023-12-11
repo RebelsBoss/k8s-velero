@@ -7,9 +7,9 @@ metadata:
   namespace: velero-ns
 spec:
   config:
-    region: eu-de
+    region: <___>   !!!
     s3ForcePathStyle: "true"
-    s3Url: <url>  !!!
+    s3Url: <___>  !!!
   objectStorage:
-    bucket: <bucket-name>  !!!
+    bucket: <___>  !!!
   provider: aws
