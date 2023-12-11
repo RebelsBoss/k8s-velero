@@ -7,5 +7,5 @@ metadata:
     component: velero
 spec:
   config:
-    region: eu-de
+    region: <__>   !!!
   provider: aws
