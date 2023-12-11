@@ -21,7 +21,7 @@ spec:
         deploy: velero
     spec:
       imagePullSecrets:
-      - name: <nexus-secret>   !!!
+      - name: <___>   !!!
       containers:
       - args:
         - server
@@ -41,7 +41,7 @@ spec:
         - name: AWS_SHARED_CREDENTIALS_FILE
           value: /credentials/cloud
         name: velero
-        image: <velero/velero:v1.12.2>   !!!
+        image: <___>   !!!
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
@@ -63,13 +63,13 @@ spec:
         - mountPath: /credentials
           name: cloud-credentials
       initContainers:
-      - image: <velero/velero-plugin-for-aws:v1.12.2>   !!!
+      - image: <___>   !!!
         imagePullPolicy: Always
         name: velero-plugin-for-aws
         volumeMounts:
         - mountPath: /target
           name: plugins
-      - image: <velero/velero-plugin-for-csi:v0.6.2>   !!!
+      - image: <___>   !!!
         imagePullPolicy: Always
         name: velero-plugin-for-csi
         volumeMounts:
