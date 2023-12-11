@@ -4,7 +4,7 @@ metadata:
   name: test-restore-schedule
   namespace: velero-ns
 spec:
-  backupName: schedule-20231208114630
+  backupName: <schedule-20231208114630>   !!!
   includedNamespaces:
   - 'test-backup'
   restorePVs: true
