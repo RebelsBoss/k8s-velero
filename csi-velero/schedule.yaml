@@ -6,7 +6,8 @@ metadata:
   #annotations:
   #  velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "csi-vsphere-vsc"
 spec:
-  schedule: '*/5 * * * *'
+  # Every 5 min start, schedule
+  schedule: '*/5 * * * *' 
   template:
     ttl: "720h"
     storageLocation: default
